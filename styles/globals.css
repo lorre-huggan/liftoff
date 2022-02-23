@@ -4,6 +4,6 @@
 
 @layer components {
   body {
-    @apply bg-endless overflow-x-hidden text-white;
+    @apply bg-endless overflow-x-hidden text-slate-100;
   }
 }

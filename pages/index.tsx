@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Details from '../components/Details';
 import Explore from '../components/Explore';
 import Hero from '../components/Hero';
 
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
       </Head>
       <Hero />
       <Explore />
+      <Details />
     </>
   );
 };

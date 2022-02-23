@@ -269,7 +269,7 @@ export default Explore;
 
 const Grid: React.FC = () => {
   return (
-    <div className="mt-16 mb-16 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 xl:grid-cols-3">
+    <div className="mt-16 mb-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8 xl:grid-cols-3">
       {cards.map((card, i) => {
         return (
           <div
@@ -283,7 +283,7 @@ const Grid: React.FC = () => {
                 {card.title}
               </h3>
               <p className="text-center text-lg">{card.sub}</p>
-              <p className="absolute bottom-10 text-xl  transition-opacity group-hover:opacity-100 sm:opacity-0">
+              <p className=":opacity-0 absolute bottom-10 hidden text-xl transition-opacity group-hover:opacity-100 md:block">
                 Coming Soon
               </p>
             </div>
@@ -298,7 +298,7 @@ const CourseDetails: React.FC = () => {
   return (
     <div className="mb-4 flex w-full flex-col md:flex-row">
       <div className="mb-4 flex-1 p-2">
-        <h3 className="mb-4 font-mono text-3xl font-bold text-slate-800">
+        <h3 className="mb-4 font-mono text-4xl font-bold text-slate-800">
           Who is this course for?
         </h3>
         <p className="mb-2 text-lg text-slate-600">

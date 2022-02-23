@@ -6,7 +6,7 @@ type Props = {};
 const Header = (props: Props) => {
   return (
     <header className="h-24">
-      <div className="mx-auto flex h-full w-[90%] items-center justify-between lg:w-[70%]">
+      <div className="mx-auto flex h-full w-[90%] items-center justify-between lg:w-[85%] xl:w-[75%]">
         <div className="relative h-full w-[164px]">
           <Image src={Logo} alt="logo" layout="fill" />
         </div>

@@ -73,7 +73,7 @@ const content = [{ img: one }, { img: two }, { img: three }];
 
 const Details = (props: Props) => {
   return (
-    <section className="mx-auto mt-16 w-[90%] lg:w-[85%] 2xl:w-[65%]">
+    <section className="mx-auto mt-16 w-[90%] pb-16 lg:w-[85%] 2xl:w-[65%]">
       <h3 className="text-center font-mono text-3xl font-bold md:text-5xl">
         {`Here's what you'll get`}
       </h3>
@@ -111,7 +111,7 @@ const Card: React.FC<ICard> = ({ svg, text }) => {
 
 const Courses: React.FC = () => {
   return (
-    <div className="from-tpink-600 mx-auto mt-16 w-full rounded-lg bg-gradient-to-br to-red-400 px-4 pt-4 md:w-[80%]">
+    <div className="from-tpink-600 mx-auto mt-16 w-full rounded-lg bg-gradient-to-br to-red-300 px-4 pt-4 md:w-[80%]">
       <h3 className="mb-2 text-center font-mono text-2xl font-black">
         Online Courses
       </h3>

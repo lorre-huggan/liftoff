@@ -3,6 +3,8 @@ import Head from 'next/head';
 import Details from '../components/Details';
 import Explore from '../components/Explore';
 import Hero from '../components/Hero';
+import Liftoff from '../components/Liftoff';
+import Testimonials from '../components/Testimonials';
 
 const Home: NextPage = () => {
   return (
@@ -15,6 +17,8 @@ const Home: NextPage = () => {
       <Hero />
       <Explore />
       <Details />
+      <Testimonials />
+      <Liftoff />
     </>
   );
 };

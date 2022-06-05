@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { Popover } from '@headlessui/react';
 import One from '../../public/image/chapter-01.jpg';
@@ -246,19 +246,61 @@ const pops = [
 ];
 
 const Explore = (props: Props) => {
+  const [scrollY, setScrollY] = useState<number>(0);
+  const h2Ref = useRef<HTMLHeadingElement>(null);
+  const pRef = useRef<HTMLParagraphElement>(null);
+  const [isPassesH2, setIsPassesH2] = useState(false);
+  const [isPassesP, setIsPassesP] = useState(false);
+
+  const handleScroll = () => {
+    let currentScrollY = window.scrollY;
+
+    setScrollY(currentScrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (h2Ref.current?.offsetTop! < scrollY * 2) {
+      setIsPassesH2(true);
+    } else {
+      setIsPassesH2(false);
+    }
+    if (pRef.current?.offsetTop! < scrollY * 2) {
+      setIsPassesP(true);
+    } else {
+      setIsPassesP(false);
+    }
+  }, [scrollY]);
+
   return (
     <section className="mt-4 w-full bg-slate-100 pt-6 pb-10 lg:p-10 lg:pb-16">
       <div className="mx-auto w-[90%] 2xl:w-[70%]">
         <div className="mx-auto w-full pt-8 sm:w-[90%] lg:w-2/5">
-          <h2 className=" text-center text-4xl  font-bold text-slate-800 lg:text-7xl">
+          <h2
+            ref={h2Ref}
+            className={`text-center text-4xl  font-bold text-slate-800 transition-all duration-300 ease-in-out lg:text-7xl ${
+              isPassesH2 ? 'opacity-100' : 'translate-y-10 opacity-0'
+            }`}
+          >
             Explore the course
           </h2>
-          <p className="mt-8 text-center text-base text-slate-600 lg:text-xl">
+          <p
+            ref={pRef}
+            className={`mt-8 text-center text-base text-slate-600 transition-all duration-300 ease-in-out lg:text-xl ${
+              isPassesP ? 'opacity-100' : '-translate-y-10 opacity-0'
+            }`}
+          >
             Click on any of the chapters below to learn a little more about the
             course and hear a sample of the audiobook.
           </p>
         </div>
-        <Grid />
+        <Grid scrollY={scrollY} />
         <CourseDetails />
       </div>
     </section>
@@ -267,25 +309,42 @@ const Explore = (props: Props) => {
 
 export default Explore;
 
-const Grid: React.FC = () => {
+interface IScroll {
+  scrollY: number;
+}
+
+const Grid: React.FC<IScroll> = ({ scrollY }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isPassedCard, setIsPassedCard] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (cardRef.current?.offsetTop! < scrollY * 4) {
+      setIsPassedCard(true);
+    } else {
+      setIsPassedCard(false);
+    }
+  }, [scrollY]);
+
   return (
     <div className="mt-16 mb-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8 xl:grid-cols-3">
       {cards.map((card, i) => {
         return (
           <div
+            style={{ transitionDelay: `${(i + 1) * 100}ms` }}
+            ref={cardRef}
             key={i}
-            className="group relative mx-auto min-h-[400px] w-[280px] overflow-hidden rounded-2xl sm:min-h-[470px] sm:w-[350px]"
+            className={`group relative mx-auto min-h-[400px] w-[280px] overflow-hidden rounded-2xl transition-all duration-500   ease-in-out  sm:min-h-[470px] sm:w-[350px] ${
+              isPassedCard ? 'opacity-100' : 'translate-y-10 opacity-0'
+            }`}
           >
+            <div className="absolute bottom-0 z-20 h-1/3 w-full bg-gradient-to-t from-black/90  via-black/60 to-transparent"></div>
             <Image src={card.image} alt={card.title} layout="fill" />
-            <div className="absolute top-0 left-0 z-10 flex h-full w-full flex-col items-center justify-center bg-gray-800/50 p-6">
-              <p className="mb-2 uppercase">{card.chapter}</p>
-              <h3 className="mb-4 text-center font-mono text-4xl font-bold">
+            <div className="absolute  top-0 left-0  flex h-full w-full flex-col items-center justify-center bg-gray-800/50 p-6">
+              <p className="z-30 mb-2 uppercase">{card.chapter}</p>
+              <h3 className="z-30 mb-4 text-center font-mono text-4xl font-bold">
                 {card.title}
               </h3>
-              <p className="text-center text-lg">{card.sub}</p>
-              <p className=":opacity-0 absolute bottom-10 hidden text-xl transition-opacity group-hover:opacity-100 md:block">
-                Coming Soon
-              </p>
+              <p className="z-30 text-center text-lg">{card.sub}</p>
             </div>
           </div>
         );

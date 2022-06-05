@@ -6,7 +6,7 @@ type Props = {};
 const Liftoff = (props: Props) => {
   return (
     <section className="py-24">
-      <div className="mx-auto grid w-[90%] grid-cols-1 gap-16 md:grid-cols-2">
+      <div className="mx-auto grid w-[90%] grid-cols-1 gap-16 md:grid-cols-2 xl:w-[70%]">
         <div className="relative flex items-center justify-center ">
           <div className="relative h-[460px] w-[350px]">
             <div className="absolute top-10 left-0 h-[20rem] w-[10rem] animate-pulse bg-cyan-300/30 blur-3xl delay-300 duration-200 " />

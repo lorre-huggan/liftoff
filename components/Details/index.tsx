@@ -134,21 +134,21 @@ const MyTabs = () => {
             <Tab
               className={({ selected }) =>
                 selected
-                  ? 'h-5 w-5 animate-pulse rounded-full bg-white'
+                  ? 'h-5 w-5 animate-bounce rounded-full bg-white'
                   : 'h-5 w-5 rounded-full bg-white/40'
               }
             ></Tab>
             <Tab
               className={({ selected }) =>
                 selected
-                  ? 'h-5 w-5 animate-pulse rounded-full bg-white'
+                  ? 'h-5 w-5 animate-bounce rounded-full bg-white'
                   : 'h-5 w-5 rounded-full bg-white/40'
               }
             ></Tab>
             <Tab
               className={({ selected }) =>
                 selected
-                  ? 'h-5 w-5 animate-pulse rounded-full bg-white'
+                  ? 'h-5 w-5 animate-bounce rounded-full bg-white'
                   : 'h-5 w-5 rounded-full bg-white/40'
               }
             ></Tab>

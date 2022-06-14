@@ -22,7 +22,7 @@ const Hero = (props: Props) => {
   }, []);
 
   return (
-    <section className="flex items-center justify-center pb-[4rem] lg:mt-8 lg:px-[2rem] lg:pb-[8rem] xl:px-[10rem] xl:pb-[10rem] 2xl:mt-16">
+    <section className="flex items-center justify-center overflow-hidden pb-[4rem] lg:mt-8 lg:overflow-visible lg:px-[2rem] lg:pb-[8rem] xl:px-[10rem] xl:pb-[10rem] 2xl:mt-16">
       <div className="lg:w-100% mx-auto mt-8 grid w-[90%] grid-cols-1  lg:grid-cols-2 lg:gap-2">
         <Left scrollY={scrollY} />
         <Right scrollY={scrollY} />
